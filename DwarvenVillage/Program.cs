@@ -1,5 +1,8 @@
-﻿using DwarvenVillage.Utils.Loggers;
+﻿using DwarvenVillage.Entities;
+using DwarvenVillage.Factories;
+using DwarvenVillage.Utils.Loggers;
 using DwarvenVillage.Utils.Randomizers;
+using System.Collections.Generic;
 
 namespace DwarvenVillage
 {
@@ -59,9 +62,10 @@ namespace DwarvenVillage
             
 
             IDwarfTypeRandomizer rand = new DwarfTypeRandomizer();
-            for(int i = 0; i <10; i++)
+            List<Dwarf> dwarfs = DwarvenFactory.Create10Dwarfs();
+            foreach(Dwarf dwarf in dwarfs)
             {
-                Logger.WriteLog(rand.GetRandomDwarf().ToString());
+                Logger.WriteLog(dwarf.ToString());
             }
         }
     }
