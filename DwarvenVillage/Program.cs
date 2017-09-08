@@ -1,4 +1,5 @@
 ﻿using DwarvenVillage.Entities;
+using DwarvenVillage.Entities.Mine;
 using DwarvenVillage.Factories;
 using DwarvenVillage.Utils.Loggers;
 using DwarvenVillage.Utils.Randomizers;
@@ -63,10 +64,16 @@ namespace DwarvenVillage
 
             IDwarfTypeRandomizer rand = new DwarfTypeRandomizer();
             List<Dwarf> dwarfs = DwarvenFactory.Create10Dwarfs();
-            foreach(Dwarf dwarf in dwarfs)
+            Shaft shaft = new Shaft();
+            while (true)
             {
-                Logger.WriteLog(dwarf.ToString());
+                shaft.GoDownTheShaft(dwarfs);
+                shaft.StartWorking();
+                if (shaft.IsDestoryed)
+                    shaft.RebuildShaft();
             }
+            
+            
         }
     }
 }

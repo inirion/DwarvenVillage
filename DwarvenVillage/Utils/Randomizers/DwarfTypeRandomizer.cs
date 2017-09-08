@@ -8,7 +8,7 @@ namespace DwarvenVillage.Utils.Randomizers
         private int Father = 35;
         private int Single = 30;
         private int LazyBastard = 25;
-        private Random _random = new Random();
+        private static Random _random = new Random();
 
         public int Roll()
         {
